@@ -21,27 +21,31 @@ let app = new Vue({
 //require('./modules/munge-email-address.js');
 //var $ = require('jquery');
 
-let Masonry = require('masonry-layout');
+if (document.querySelector('.Masonry__grid')) {
+
+    let Masonry = require('masonry-layout');
 //var flowtype = require('./vendor/flowtype.js')
 
-let msnry = new Masonry('.Masonry__grid', {
-    // options
-    itemSelector: '.Masonry__grid-item',
-    columnWidth: '.grid-sizer',
-    gutter: 0,
-    //fitWidth: true
-});
-
+    const msnry = new Masonry('.Masonry__grid', {
+        // options
+        itemSelector: '.Masonry__grid-item',
+        columnWidth: '.grid-sizer',
+        gutter: 0,
+        //fitWidth: true
+    });
 window.onload = function(){
-	msnry.layout()
+    if(msnry != undefined){
+	    msnry.layout()
+    }
 	console.log('... done ... :) ... wellcome to dreiheiligengestalten.at')
+}
 }
 
 document.onreadystatechange = function(){
 	//console.log(document.readyState)
-    let state = document.readyState;
+    let state = document.readyState
+    console.log(state)
     if ( state == 'complete' ){
-
 		console.log('dom loaded ... now loading images ... ')
 	}
 }

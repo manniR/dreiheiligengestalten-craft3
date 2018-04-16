@@ -23,6 +23,9 @@
 # CRAFT STORAGE
 /storage/*
 
+# DB backups
+/db/*
+
 # ASSETS
 /web/assets/*
 

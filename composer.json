@@ -23,7 +23,8 @@
     "vlucas/phpdotenv": "^2.4.0",
     "craftcms/redactor": "1.1.0",
     "verbb/super-table": "2.0.5",
-    "craftcms/element-api": "2.5.2"
+    "craftcms/element-api": "2.5.2",
+    "pennebaker/craft-architect": "2.2.8"
   },
   "autoload": {
     "psr-4": {
