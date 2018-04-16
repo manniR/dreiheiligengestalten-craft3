@@ -1,0 +1,592 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900)
+//@import url(http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css)
+
+
+// http://schempy.com/2015/04/03/responsive_layout_with_stylus_jeet_and_rupture/
+//@import "rupture"
+//@import "nib"
+@import "../../node_modules/iconfonts/stylesheets/ionicons.styl"
+
+ion-font()
+//@import "lost"
+
+@lost cycle auto
+
+
+step($start, $steps, $multiplier = $start, $unit="none")
+	for i in (1...$steps)
+		$start = $start*$multiplier
+	if $unit != "none"
+		unit($start, $unit)
+	else
+		$start
+
+
+
+@lost gutter 0px
+$base-font-size = 16
+
+$px = (1 / $base-font-size) rem
+
+$phi = 1.618
+$golden_major = 0.618
+$golden_minor = 0.382
+
+$c_black = #555
+$c_white = #eee
+$c_footer = #415462
+
+
+
+
+
+
+
+*
+	margin 0
+	padding 0
+	box-sizing border-box
+
+iframe
+	border 0
+
+html
+	font-size: 100%
+	+below(576px)
+		font-size 14px
+
+body
+	font-size 100% // text defaults 12px
+	font-family 'Roboto', sans-serif
+	font-smoothing: antialiased !important
+	color hsl(0, 0%, 93%)
+	height 100vh
+	color $c_black
+	//line-height $phi
+	font-weight: 500
+	+below(576px)
+		text-align center
+	// +below(800px)
+	// 	background green
+
+a
+	color $c_black
+	text-decoration none
+
+
+
+.Page__wrapper-960
+	max-width 960*$px
+	margin 0 auto
+	padding 0 1rem
+	+below(576px)
+		padding 0 $golden_minor*1rem
+
+
+.Tag
+	// background lighten($c_black, 88%)
+	// padding 0.2em 0.4em
+	// border-radius 5px
+
+// header p
+// 	font-size 1.3rem
+// 	margin-bottom unit($phi, 'em')
+
+p.Caption
+	font-size 0.9rem
+	font-style italic
+	margin-bottom 4rem
+
+h1
+	font-weight 200
+	// font-size 60px
+	// font-size 60*$px
+	font-size 3rem
+	line-height $phi
+	margin $phi*2rem 0
+h2
+	font-weight: 300
+	margin $phi*1rem 0
+
+.Logo
+	h1
+		display inline-block
+		line-height normal
+		font-weight 300
+		+below(675px)
+			font-size 2.8rem
+		+below(620px)
+			font-size 2.6rem
+		+below(576px)
+			font-size 2.4rem
+		+below(463px)
+			font-size 2.2rem
+		+below(406px)
+			font-size 2rem
+		+below(376px)
+			font-size 1.8rem
+	h1 span
+		display block
+		font-weight 400
+		margin-bottom unit($golden_minor,rem)
+		font-size $phi*1rem
+		+below(768px)
+			font-size 1.5rem
+		+below(620px)
+			font-size 1.3rem
+		+below(576px)
+			font-size 1.15rem
+
+
+header
+	.Subtext
+		font-size $phi*1rem
+		+below(768px)
+			font-size 0.8rem
+		text-align right
+		margin-top unit($phi,rem)
+		//text-align right
+		//font-style italic
+	> p
+		font-size: 1.1rem
+		+below(768px)
+			font-size 1.15rem
+
+		font-weight: 300
+		line-height: $phi
+		margin-bottom $phi*1rem
+
+
+
+
+.Imagegrid__wrapper
+	lost-masonry-wrap no-flex
+.Imagegrid__item
+	position relative
+	overflow hidden
+	background hsl(99,22%,22%)
+	lost-masonry-column: 1/6
+	img
+		width 100%
+
+
+.Grid
+	position relative
+	text-align center
+	overflow hidden
+	//padding 4rem 0
+	//background: darken(tomato, 20%)
+	// lost-column: 1/3
+
+
+
+	img
+		max-width 100%
+.Grid--overlay
+	width 100%
+	height 33%
+	position absolute
+	top 100%
+	z-index 1
+	background hsla(100,0%,0%,0.5)
+	display flex
+	align-items center
+	justify-content center
+	transition top 0.3s ease;
+	&::before
+		ion-icon("email", 1em, )
+		line-height 1em
+		padding-right 0.5em
+.Grid:hover .Grid--overlay, .Imagegrid__item:hover .Grid--overlay
+	top 67%
+
+.Vimeo
+	&__wrapper
+		position: relative
+		//padding-top: 1.44444444444%
+		// padding-top: 25px;
+		height 0
+		overflow hidden
+		iframe
+			position: absolute
+			//top -25%
+			//left 0
+			width 100%
+			height 100%
+			// background red
+			// margin-top -5%
+	&__size-cinematic
+		padding-bottom: percentage(816/1920)//56.25% /*16:9*/
+	&__size-widescreen
+		padding-bottom: percentage(1080/1920)
+
+.Headline__arbeiten
+	font-weight: 400
+	//margin-bottom: 0.382rem
+	font-size: 1.618rem
+	margin: 0 0 2rem 0.5rem
+
+section
+	margin 0 unit($golden_minor, rem)
+	margin-bottom 5rem
+.Projects
+	margin-left 0
+	margin-right 0
+
+.Grid__members
+	lost-utility: clearfix
+.Grid__item-member
+	lost-column 1/3
+	margin-bottom 2rem
+	+below(768px)
+		lost-column 1/2
+	+below(576px)
+		lost-column 1/1
+		margin-bottom $phi*1rem
+	&:last-child
+		margin-bottom 0
+
+
+.Members
+	position relative
+	margin-bottom 1rem
+	+below(620px)
+		margin-bottom 4rem
+	//height 100vw
+.utility--square_
+	width 100%
+	//height 200px
+	background gray
+.Member
+	font-weight 500
+	color $c_black
+	a
+		color $c_black
+	position relative
+	font-size $golden_minor*2rem
+	//padding 0 unit($phi, 'em') 0 0
+	//margin-bottom unit($phi, 'em')
+	overflow hidden
+	// lost-column: 1/3
+	//min-height 4rem
+	// lost-waffle: 1/3 3 2rem;
+	&__wrapper
+	// &__default-image
+	// 	background url('/img/member-default.jpg') center no-repeat
+	// 	background-size cover
+	// &__manni
+	// 	background url('/img/manni.jpg') center no-repeat
+	// 	background-size cover
+	h2
+		font-size 1.5rem
+		margin  0
+		//margin-bottom unit($phi,rem)
+		margin-bottom 1.1rem
+		line-height 1
+		//margin-bottom unit($golden_minor,rem)
+
+		//+below(576px)
+		//	margin-bottom unit($golden_minor,rem)
+		font-weight 500
+		// &::before
+		// 	ion-icon("happy", $phi*2rem)
+		// 	color lighten($c_black, 44%)
+		// 	//line-height 2 rem
+		// 	// line-height 5em
+		// 	padding-right $golden_minor*1rem
+
+	span, span *
+		//border-top 1px solid lighten($c_black, 77%)
+		line-height $golden_major*3
+		font-size 0.8rem
+		+below(576px)
+			font-size 0.9rem
+			line-height 2
+	a *
+		//line-height 2rem
+	&__email, &__phone, &__url, .Hund
+		display block
+	&__email
+		&::before
+			ion-icon("email", 1.3rem)
+			color lighten($c_black, 44%)
+			//line-height 1.2 rem
+			padding-right $golden_minor*1rem
+	&__phone
+			&::before
+				ion-icon("ios-telephone", 1.3rem)
+				color lighten($c_black, 44%)
+				//line-height 2 rem
+				padding-right $golden_minor*1rem
+	&__url
+			&::before
+				ion-icon("ionic", 1.3rem)
+				color lighten($c_black, 44%)
+				padding-right $golden_minor*1rem
+				//line-height 2 rem
+				//padding-bottom $golden_minor*1.1rem
+.Socials
+	margin-top 1rem
+	a
+		display inline-block
+		line-height 2
+		padding 1rem
+		&:hover
+			background lighten($c_footer, 11%)
+	&__google-link::before
+		ion-icon("social-googleplus", 1.3rem)
+		color lighten($c_black, 44%)
+		//padding-right $golden_minor*1rem
+	&__vimeo-link::before
+		ion-icon("social-vimeo", 1.3rem)
+		color lighten($c_black, 44%)
+		// padding-right $golden_minor*1rem
+	&__youtube-link::before
+		ion-icon("social-youtube", 1.3rem)
+		color lighten($c_black, 44%)
+		// padding-right $golden_minor*1rem
+	&__linkedin-link::before
+		ion-icon("social-youtube", 1.3rem)
+		color lighten($c_black, 44%)
+		// padding-right $golden_minor*1rem
+
+img
+	width 100%
+	position relative
+
+// 3 column layout
+// .grid-sizer, .Masonry__grid-item
+// 	width: 100%
+
+.grid-sizer, .Masonry__grid-item
+	width 33.33%
+	background lightgreen
+	//height 2rem
+	+below(768px)
+		width 50%
+	+below(576px)
+		width 100%
+
+
+// @media screen and (min-width: 768px)
+// 	.grid-sizer, .Masonry__grid-item
+// 		 width: 49%
+
+// @media screen and (min-width: 1600px)
+// 	.grid-sizer, .Masonry__grid-item
+// 		 width: 32.5%
+
+
+.Masonry
+	&__grid
+		margin 0 auto
+		//lost-masonry-wrap:flex 8px
+		// column-count 3
+		// column-gap 0
+		&-item
+			//lost-masonry-column: 1/3 8px
+			// padding .5em
+			// display inline-block
+			//margin unit($golden_minor,rem)
+			// margin-bottom 0.6rem
+			// border-radius unit($golden_minor,rem)
+			// width 100%
+			&--with-shadow
+				//border-top 1px solid lighten($c_black,88%)
+				// box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.44)
+
+.Project__featured
+	width 100%
+
+.Project
+	//overflow hidden
+	+below(576px)
+		text-align left
+	position relative
+	background white
+	&__featured
+	&__wrapper
+		position relative
+		margin unit($golden_minor, rem)
+		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.44)
+	&__image
+		line-height 0
+	&__details
+		padding 1rem
+	&__description
+		margin-top 1rem
+		font-weight 300
+	&__creators
+		font-weight 300
+		margin-bottom unit($golden_minor, rem)
+		a
+			line-height 0
+			box-sizing border-box
+			//background green
+			//display inline-block
+		a:hover
+			border-bottom 2px solid darken($c_white, 22%)
+	h3
+		font-size 1.2rem
+
+
+.Feature
+	+below(576px)
+		text-align left
+	h1
+		font-size $phi*1rem
+		font-weight 300
+		line-height 1
+		margin $phi*1rem 0
+		+below(576px)
+			font-size $golden_minor + 1rem
+		span
+			color #AA0020
+	p
+		font-size 1rem
+		font-weight 300
+		line-height $phi
+
+footer
+	position relative
+	color $c_white
+	background $c_footer
+	overflow hidden
+	margin-top 2rem
+	padding 0 3rem 5rem 3rem
+	+below(1000px)
+		padding 0 0 5rem 3rem
+	+below(768px)
+		padding 0 1.5rem 5rem 1.5rem
+	+below(576px)
+		padding 0 1rem 5rem 1rem
+
+	box-shadow: inset 1px 4px 9px -6px rgba(0, 0, 0, 1)
+
+	h2, p, h1, h3, .Member__name, .Logo
+		// line-height 2
+		font-size 1.2rem
+		font-weight 400
+		color $c_white
+	.Member *
+		color $c_white
+		font-weight 300
+		//line-height 3
+	.Member * ::before
+		color $c_white
+	.Member__name
+		padding-left 0rem
+		margin-bottom 0
+		line-height 2
+		font-weight 400
+		//margin-bottom unit($golden_minor, rem)
+	.Member
+		//padding-left 1rem
+
+		margin-bottom $phi* 2rem
+		+below(768px)
+			margin-bottom unit($phi, rem)
+		//border-left 5px solid lighten($c_footer, 6%)
+	.Member span > a
+		line-height 2
+		position relative
+		display inline-block
+		padding-left 0rem
+		font-size 0.9rem
+		// &::before
+		// 	transition all 0.5s ease 0.2s
+
+		// &:hover
+		// 	//background lighten($c_footer, 11%)
+		// 	&::before
+		// 		// backface-visibility: hidden
+		// 		padding-right 0.6875rem
+		// 		padding-left 6*$px
+		// 		transform translateZ(0) scale(1.0, 1.0)
+		// 		//filter blur(0)
+		// 		backface-visibility: hidden
+		// 		transition all 0.5s ease 0s
+		// 		// zoom 150%
+
+	p.Copyright
+		font-size 0.8rem
+		// max-width 1280*$px
+		// margin 0 auto
+		// display block
+		position relative
+		//text-align center
+		display inline-block
+		// //transfrom-origin 50% 50%
+		left 50%
+		transform translateX(-50%)
+		//transform-origin 0 50%
+		// transform rotate(-90deg)
+		// left 1rem
+		// bottom 0
+		// background green
+		// text-align left
+		+below(576px)
+			display block
+			// transform translateX(0)
+
+			//left 0%
+				// width 80%
+				//margin 0 auto
+
+.Grid__footer
+	overflow hidden
+	max-width 1024*$px
+	margin $phi*2rem auto
+	// +below(768px)
+	// 	max-width 95%
+	// +below(1280px)
+	// 	max-width 1024*$px
+	// +below(1024px)
+	// 	max-width 85%
+	// +below(850px)
+	// 	max-width 90%
+	&-item
+		lost-column: 5/9
+		+below(1000px)
+			lost-column 1/1
+		// lost-column-cycle: 2
+		// +below(1024px)
+		// 	lost-column: 1/2
+		// +below(768px)
+		// 	lost-column: 1/2
+		// +below(850px)
+		// 	lost-column: 1
+	&-item-dreiheiligen
+		lost-column: 4/9
+		+below(1000px)
+			lost-column 1/1
+			margin-bottom 2rem
+		// lost-column cycle 2
+		.Logo
+			color $c_white
+			display relative
+			font-size 2.2rem
+			margin 0
+			line-height 1.5
+			margin-bottom 1rem
+			+below(768px)
+				font-size 2rem
+			span
+				display block
+				font-size 1.3rem
+				+below(768px)
+					font-size 1.2rem
+				line-height 1
+		p
+			line-height 1.5
+			font-size 0.9rem
+			margin-bottom 1rem
+
+
+	&-item-gestalten
+		lost-column 1/2
+		+below(768px)
+			lost-column 1/2
+		+below(576px)
+			lost-column 1/1
+
