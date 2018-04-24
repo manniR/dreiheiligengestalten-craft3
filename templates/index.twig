@@ -1,100 +1,33 @@
-{% extends 'layouts/main.twig' %}
-{% block content %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="utf-8"/>
+    <title>{{ siteName }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+    <meta name="referrer" content="origin-when-cross-origin"/>
+    <link rel="stylesheet" type="text/css" href="/assets/css/styles.css">
+</head>
+<body class="">
+<div id="app">
 
-    <main class="Page__wrapper-960">
-        <header>
-            <div class="Logo">
-                <h1><span>Kreativpool</span>DREIHEILIGENGESTALTEN.AT</h1></div>
-            <p> was soll denn das sein?</p>
-            <p> ganz einfach - drei heiligen gestalten ist die kreativplattform in der kohlstatt*.</p>
-            <p><span class="Tag">film</span>, <span class="Tag">grafik</span>, <span class="Tag">text</span>, <span
-                        class="Tag">webdesign</span>, <span class="Tag">online-shoplösungen</span>, <span
-                        class="Tag">kreativberatung</span> und manchmal einen <span class="Tag">hund</span> zum
-                streicheln.
-                <br>alles das gibt's im haus <span class="Tag">dreiheiligenstrasse 17</span>.</p>
-            <p class="Caption">* alter name von dreiheiligen</p>
-        </header>
+    {% block content %}
+    {% endblock %}
 
-        <h2 class="Headline__arbeiten">Arbeiten aus unserem Kreativpool</h2>
+</div>
 
-        {% set Projects = craft.entries.section('portfolio').all() %}
-        <section class="Projects Masonry__grid">
-            {% for Project in Projects %}
-                <div class="grid-sizer"></div>
-                <div class="Project Masonry__grid-item Masonry__grid-item--with-shadow">
-                    <div class="Project__wrapper">
-                        <div class="Project__image">
-                    <a href="{{ Project.url }}">
-                            <img src="{{ Project.portfolioImages[0].getUrl() }}" alt="Project.portfolioImages[0].title" class="Project__image--ov">
-                    </a>
-                        </div>
-                        <div class="Project__details">
-                            <p class="Project__creators">
-                                {% for Creator in Project.selectMember.all() %}
-                                    <a href="{{ Creator.websiteUrl }}">{{ Creator.title }}</a>
-                                {% endfor %}
-                            </p>
-                            <h3 class="Project__title">{{ Project.title }}</h3>
 
-                            <div class="Project__description">
-                                {% if Project.portfolioText | length %}
-                                    {{ Project.portfolioText | raw }}
-                                {% endif %}
-                                <p class="mt-4">
-                                    {% for Category in Project.portfolioCategories %}
-                                        <span>{{ Category.title }}</span>
-                                    {% endfor %}
+{% if craft.request.isLivePreview %}
+    <script type="text/javascript">
+        window.document.documentElement.dataset.livePreview = true;
+        window.document.documentElement.dataset.path        = '{{ '/' ~ craft.request.path }}';
+    </script>
+{% endif %}
 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-            {% endfor %}
-        </section>
-    </main>
-    <footer>
-        <div class="Grid__footer">
-            <div class="Grid__footer-item Grid__footer-item-dreiheiligen">
-                <div class="Member Member__footer">
-                    <div class="vcard">
-                        <h2 class="Member__name Logo"><span>Kreativpool</span>Dreiheiligengestalten</h2>
-                        <p>
-                            Dreiheiligenstraße 17
-                            <br>6020 Innsbruck</p>
-                        <!--span.Member__email.email #{email} -->
-                        <br><span><a href="http://www.dreiheiligengestalten.at" class="Member__url url">dreiheiligengestalten.at</a></span>
-                        <div class="Socials">
-                            <a href="https://plus.google.com/104325596482992184046" class="Socials__google-link"></a>
-                            <a href="https://vimeo.com/dreiheiligengestalten" class="Socials__vimeo-link"></a>
-                            <a href="https://www.youtube.com/channel/UCs4GvIWlpdQq2CJOJPAKz3A"
-                               class="Socials__youtube-link"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<script type="text/javascript" src="/assets/js/app.js"></script>
 
-            <div class="Grid__footer-item w-1/2">
-                <div class="Grid__footer-item-gestalten flex flex-wrap">
-                    {% set Members = craft.entries.section('members').all() %}
-                    {% for Member in Members %}
-                        <div class="Member Member__footer w-full sm:w-1/2">
-                            <div class="vcard">
-                                <h2 class="Member__name fn">{{ Member.title }}</h2><span><a
-                                            href="mailto:{{ Member.email }}"
-                                            class="Member__email email">{{ Member.email }}</a></span>
-                                {% if Member.websiteUrl | length %}
-                                    <br><span><a href="{{ Member.websiteUrl }}" class="Member__url url">{{ Member.websiteUrl }}</a></span>
-                                {% endif %}
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-            <p class="Copyright">©2016 Kreativpool Dreiheiligengestalten</p>
-        </div>
-    </footer>
-    </div>
 
-{% endblock %}
+</body>
+</html>
+
