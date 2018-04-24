@@ -62,8 +62,7 @@
                         <h2 class="Member__name Logo"><span>Kreativpool</span>Dreiheiligengestalten</h2>
                         <p>
                             Dreiheiligenstraße 17
-                            <br>6020 Innsbruck</p><span><a href="mailto:barfuss@dreiheiligengestalten.at"
-                                                           class="Member__email email">barfuss(at)dreiheiligengestalten.at</a></span>
+                            <br>6020 Innsbruck</p>
                         <!--span.Member__email.email #{email} -->
                         <br><span><a href="http://www.dreiheiligengestalten.at" class="Member__url url">dreiheiligengestalten.at</a></span>
                         <div class="Socials">
@@ -76,17 +75,19 @@
                 </div>
             </div>
 
-            <div class="Grid__footer-item">
-                <div class="Grid__footer-item-gestalten">
+            <div class="Grid__footer-item w-1/2">
+                <div class="Grid__footer-item-gestalten flex flex-wrap">
                     {% set Members = craft.entries.section('members').all() %}
                     {% for Member in Members %}
-                        <div class="Member Member__footer">
+                        <div class="Member Member__footer w-full sm:w-1/2">
                             <div class="vcard">
                                 <h2 class="Member__name fn">{{ Member.title }}</h2><span><a
                                             href="mailto:{{ Member.email }}"
                                             class="Member__email email">{{ Member.email }}</a></span>
-                                <br><span><a href="{{ Member.websiteUrl }}"
-                                             class="Member__url url">{{ Member.websiteUrl }}</a></span></div>
+                                {% if Member.websiteUrl | length %}
+                                    <br><span><a href="{{ Member.websiteUrl }}" class="Member__url url">{{ Member.websiteUrl }}</a></span>
+                                {% endif %}
+                            </div>
                         </div>
                     {% endfor %}
                 </div>

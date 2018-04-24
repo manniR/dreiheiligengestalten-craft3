@@ -318,6 +318,12 @@ autoprefixer@^7.2.6:
     postcss "^6.0.17"
     postcss-value-parser "^3.2.3"
 
+autoresponsive-vue@^1.0.17:
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/autoresponsive-vue/-/autoresponsive-vue-1.0.17.tgz#f10347ff63ac5c657cb4dacca501d005ba69bc5c"
+  dependencies:
+    exenv "^1.2.2"
+
 aws-sign2@~0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.6.0.tgz#14342dd38dbcc94d0e5b87d763cd63612c0e794f"
@@ -2425,6 +2431,10 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
+ejs@0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/ejs/-/ejs-0.7.1.tgz#6dab41cbdee572986db328a2a8d22040f20fba7c"
+
 electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.30:
   version "1.3.42"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.42.tgz#95c33bf01d0cc405556aec899fe61fd4d76ea0f9"
@@ -2744,6 +2754,10 @@ executable@^1.0.0:
   resolved "https://registry.yarnpkg.com/executable/-/executable-1.1.0.tgz#877980e9112f3391066da37265de7ad8434ab4d9"
   dependencies:
     meow "^3.1.0"
+
+exenv@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
 
 expand-brackets@^0.1.4:
   version "0.1.5"
@@ -3878,6 +3892,12 @@ imagemin@^5.3.1:
     pify "^2.3.0"
     replace-ext "^1.0.0"
 
+imagesloaded@latest:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/imagesloaded/-/imagesloaded-4.1.4.tgz#1376efcd162bb768c34c3727ac89cc04051f3cc7"
+  dependencies:
+    ev-emitter "^1.0.0"
+
 img-loader@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/img-loader/-/img-loader-2.0.1.tgz#de8f80aa5e3222fa1eb4c8c3bc3d41e5d8dd7c78"
@@ -4819,12 +4839,25 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+masonry-layout@4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/masonry-layout/-/masonry-layout-4.2.0.tgz#43835c6b6e0d72eff2c31a118c8000cccc4ab965"
+  dependencies:
+    get-size "^2.0.2"
+    outlayer "^2.1.0"
+
 masonry-layout@^4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/masonry-layout/-/masonry-layout-4.2.1.tgz#1c878b85a88866ba6b39b9bd0e162348aed7ce13"
   dependencies:
     get-size "^2.0.2"
     outlayer "^2.1.0"
+
+masonry@latest:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/masonry/-/masonry-0.0.2.tgz#c06a0b2efc043727eadd16b35fdae93a3908f432"
+  dependencies:
+    ejs "0.7.1"
 
 math-expression-evaluator@^1.2.14:
   version "1.2.17"
@@ -7952,6 +7985,10 @@ vue-hot-reload-api@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.0.tgz#97976142405d13d8efae154749e88c4e358cf926"
 
+vue-js-modal@^1.3.13:
+  version "1.3.13"
+  resolved "https://registry.yarnpkg.com/vue-js-modal/-/vue-js-modal-1.3.13.tgz#1718c3182a94a03e03422db50c60229bbbd53f18"
+
 vue-loader@^13.7.1:
   version "13.7.1"
   resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-13.7.1.tgz#d9009d0abd392b4efe8b8fb1f542f6723b02dd3a"
@@ -7973,6 +8010,15 @@ vue-loader@^13.7.1:
 vue-masonry-css@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/vue-masonry-css/-/vue-masonry-css-1.0.1.tgz#0b3c5bff2ac36d580f57d0aecf16127d7bed4216"
+
+vue-masonry@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/vue-masonry/-/vue-masonry-0.11.1.tgz#f5004f971f6283e2355abb1efdaea93b7aa5242f"
+  dependencies:
+    imagesloaded latest
+    masonry latest
+    masonry-layout "4.2.0"
+    vue "^2.0.0"
 
 vue-photoswipe@^1.0.3:
   version "1.0.3"
@@ -8002,7 +8048,7 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
-vue@^2.5.16:
+vue@^2.0.0, vue@^2.5.16:
   version "2.5.16"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.16.tgz#07edb75e8412aaeed871ebafa99f4672584a0085"
 

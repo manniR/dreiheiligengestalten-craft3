@@ -1,18 +1,62 @@
 import Vue from 'vue'
+import VueRouter from 'vue-router'
+import App from './App'
+// import AutoResponsive from 'autoresponsive-vue'
+import {VueMasonryPlugin} from 'vue-masonry';
+import VModal from 'vue-js-modal'
+
 // import VueMasonry from 'vue-masonry-css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import VuePhotoSwipe from 'vue-photoswipe'
 import 'swiper/dist/css/swiper.css'
 import Portfolio from './portfolio'
-
+import {routes} from './routes'
 // Vue.use(VueMasonry);
+Vue.use(VueRouter);
 Vue.use(VueAwesomeSwiper);
+Vue.use(VueMasonryPlugin);
+Vue.use(VModal);
+// Vue.use(AutoResponsive);
 
+const isLivePreview  = window.document.documentElement.dataset.livePreview,
+    actualPath     = window.document.documentElement.dataset.path;
+
+
+let routerConfig = {
+    mode: 'history',
+    routes
+}
+
+
+
+if (isLivePreview) {
+    routerConfig.mode = 'abstract';
+}
+
+let router = new VueRouter(routerConfig);
+
+if (isLivePreview) {
+    router.replace({ path: actualPath });
+}
+
+
+// let router = new VueRouter({
+//     // mode: 'html5',
+//     mode: 'history',
+//     routes
+// })
 
 let app = new Vue({
-    el: '#app',
-    components: {Portfolio}
+  el: '#app',
+  template: '<App />',
+  components: { App },
+  router
 });
+// let app = new Vue({
+//     el: '#app',
+//     components: {Portfolio},
+//     router
+// });
 
 
 //require('./modules/vue-example.vue');
@@ -26,17 +70,17 @@ if (document.querySelector('.Masonry__grid')) {
     let Masonry = require('masonry-layout');
 //var flowtype = require('./vendor/flowtype.js')
 
-    const msnry = new Masonry('.Masonry__grid', {
-        // options
-        itemSelector: '.Masonry__grid-item',
-        columnWidth: '.grid-sizer',
-        gutter: 0,
-        //fitWidth: true
-    });
+    // const msnry = new Masonry('.Masonry__grid', {
+    //     // options
+    //     itemSelector: '.Masonry__grid-item',
+    //     columnWidth: '.grid-sizer',
+    //     gutter: 0,
+    //     //fitWidth: true
+    // });
 window.onload = function(){
-    if(msnry != undefined){
-	    msnry.layout()
-    }
+    // if(msnry != undefined){
+	 //    msnry.layout()
+    // }
 	console.log('... done ... :) ... wellcome to dreiheiligengestalten.at')
 }
 }

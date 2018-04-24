@@ -19,6 +19,6 @@
  */
 
 return [
-	'<url:(?!api\/).*>' => ['template' => 'index']
+	'<url:(?!api\/).*>' => ['template' => 'index'],
 	/* '(?!api\/).*' => 'index' */
 ];

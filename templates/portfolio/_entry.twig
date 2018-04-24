@@ -1,27 +1,32 @@
 {% extends 'layouts/main.twig' %}
 
 {% block content %}
-    <h1>{{ entry.title }}</h1>
 
     {% set Images = entry.portfolioImages.all() %}
 
     <portfolio>
-        {% if Images | length %}
-            {% for Image in Images %}
-                <swiper-slide>
-                    <div class="swiper-zoom-container">
-                        <img src="{{ Image.getUrl() }}" alt="{{ Image.title }}">
-                    </div>
-                </swiper-slide>
-            {% endfor %}
-        {% endif %}
-        {% if entry.video | length %}
-            <swiper-slide>
-                <div class="">
-                    <iframe src="{{ entry.video }}" frameborder="0"></iframe>
+        <template slot="swiperSlides">
+            <div class="swiper-slide flex justify-center items-center">
+                <div>
+                    <h1>{{ entry.title }}</h1>
                 </div>
-            </swiper-slide>
-        {% endif %}
+            </div>
+            {% if Images | length %}
+                {% for Image in Images %}
+                    <div class="swiper-slide flex justify-center items-center">
+                        <div class="w-full h-full bg-contain bg-no-repeat bg-center" style="background-image: url({{ Image.getUrl() }})"></div>
+
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% if entry.video | length %}
+                <div class="swiper-slide flex justify-center items-center">
+                    <div class="w-full h-full">
+                        <iframe class="w-full h-full"src="{{ entry.video }}" frameborder="0"></iframe>
+                    </div>
+                </div>
+            {% endif %}
+        </template>
     </portfolio>
 
 {% endblock %}

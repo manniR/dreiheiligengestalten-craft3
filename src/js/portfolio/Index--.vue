@@ -6,8 +6,9 @@
                     <div class="Project__wrapper">
                         <div class="Project__image">
 
-                            <router-link :to="`/portfolio/${project.slug}`">
-                                <img :src="project.coverImage.src" :alt="project.coverImage.title" class="Project__image--ov">
+                            <router-link :to="`/portfolio/${project.slug}`" {name: 'itemModal', params: {slug: project.slug}}>
+                                <img :src="project.images[0].src" :alt="project.images[0].title" class="Project__image--ov">
+
                             </router-link>
                         </div>
                         <div class="Project__details">

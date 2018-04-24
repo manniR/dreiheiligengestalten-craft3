@@ -6,7 +6,7 @@
     <title>{{ siteName }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
     <meta name="referrer" content="origin-when-cross-origin"/>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body class="">
 <div id="app">
@@ -15,7 +15,17 @@
     {% endblock %}
 
 </div>
-    <script type="text/javascript" src="assets/js/app.js"></script>
+
+
+{% if craft.request.isLivePreview %}
+    <script type="text/javascript">
+        window.document.documentElement.dataset.livePreview = true;
+        window.document.documentElement.dataset.path        = '{{ '/' ~ craft.request.path }}';
+    </script>
+{% endif %}
+
+
+    <script type="text/javascript" src="/assets/js/app.js"></script>
 
 
 </body>
